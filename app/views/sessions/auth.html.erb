@@ -1,0 +1,9 @@
+<h1>You've been authenticated as <%= session['username'] %></h1>
+
+<ul>
+<% @client.home_timeline({count: 50}).each do |tweet| %>
+  <% if tweet.media.any? && tweet.media.first.class == Twitter::Media::Photo %>
+    <li><img src="<%= tweet.media.first.attrs[:media_url] %>" width="200px"></li>
+  <% end %>
+<% end %>
+</ul>
